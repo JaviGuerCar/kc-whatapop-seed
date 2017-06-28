@@ -11,10 +11,11 @@
     | definido en él para notificar los clics sobre los productos.     |
     |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
-    <app-product
+    <app-product 
       *ngFor="let product of products"
-      [data]="product"
-      class="column">
+      [data]="product"(clickComprar)="comprarProducto($event)"    
+      class="column"
+      >
     </app-product>
   </div>
   <div *ngIf="products?.length === 0" class="text-center">
@@ -29,5 +30,5 @@
   | Modifica el elemento <a> para que navegue a la ruta  '/reset'.   |
   |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
-  <a>Reset de productos</a>
+  <a routerLink="/reset">Reset de productos</a>
 </div>

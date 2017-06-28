@@ -6,6 +6,8 @@ import { HttpModule } from '@angular/http';
 
 import { ConfirmDialogModule, ConfirmationService } from 'primeng/primeng';
 
+import { PublicationDatePipe } from './publication-date.pipe';
+
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BackendUriProvider } from './app-settings';
@@ -35,7 +37,8 @@ import { UserService } from './user.service';
     ProductResetComponent,
     ProductComponent,
     ProductsCollectionComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    PublicationDatePipe //declarado para el Blue Path
   ],
   imports: [
     BrowserModule,

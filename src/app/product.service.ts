@@ -1,10 +1,11 @@
 import { Inject, Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, RequestOptions, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import { BackendUri } from './app-settings';
 import { Product } from './product';
+import { Category } from './category';
 import { ProductFilter } from './product-filter';
 
 @Injectable()
@@ -58,10 +59,28 @@ export class ProductService {
     |   - Búsqueda por estado:                                         |
     |       state=x (siendo x el estado)                               |
     |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+      
+    //console.log(filter);
+
+    let queryString = '';
+ 
+    // Pink Path
+    if (filter){
+      if(filter.text){
+        queryString += `&q=${filter.text}`;
+      } 
+      if(filter.category){
+        queryString += `&category.id=${filter.category}`;
+      } 
+      if(filter.state){
+        queryString += `&state=${filter.state}`;
+      } 
+    } 
 
     return this._http
-      .get(`${this._backendUri}/products`)
-      .map((data: Response): Product[] => Product.fromJsonToList(data.json()));
+        .get(`${this._backendUri}/products?_sort=publishedDate&_order=DESC${queryString}`)
+        .map((data: Response): Product[] => Product.fromJsonToList(data.json()));
+ 
   }
 
   getProduct(productId: number): Observable<Product> {
