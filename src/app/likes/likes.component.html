@@ -1,0 +1,15 @@
+
+<!--<i class="fa fa-lg likes"
+  [ngClass]="{'fa-heart' : favorito, 'fa-heart-o': !favorito}"
+  (click)="notificarFavorito(favorito)"></i>-->
+<button (click)="notificarFavorito(favorito)" 
+  class="button" style="width: 81%;"
+  [class.alert]="favorito===false"
+  [class.success]="favorito===true">
+  <span *ngIf="favorito">
+    <i class="fa fa-thumbs-up fa-lg"></i> Me gusta
+  </span>
+  <span *ngIf="!favorito">
+   <i class="fa fa-thumbs-down fa-lg"></i> Ya no me gusta
+  </span>
+</button>

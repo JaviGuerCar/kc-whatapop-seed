@@ -17,6 +17,8 @@ export class ProductDetailsComponent implements OnDestroy, OnInit {
   product: Product;
   private _productSubscription: Subscription;
 
+  productoFavorito: boolean;
+
   constructor(
     private _productService: ProductService,
     private _route: ActivatedRoute,
@@ -26,6 +28,17 @@ export class ProductDetailsComponent implements OnDestroy, OnInit {
   ngOnInit(): void {
     this._route.data.forEach((data: { product: Product }) => this.product = data.product);
     window.scrollTo(0, 0);
+    
+    const favorito = localStorage.getItem(this.product.id.toString());
+    //Intentamos recuperar el localStorage
+    if(favorito==null){
+      this.productoFavorito = true;
+      //alert(this.productoFavorito);
+    }
+    else{
+      this.productoFavorito = false;
+      //alert(this.productoFavorito);
+    }
   }
 
   ngOnDestroy(): void {
@@ -57,6 +70,26 @@ export class ProductDetailsComponent implements OnDestroy, OnInit {
 
   goBack(): void {
     window.history.back();
+  }
+
+  marcarFavorito(favorito: boolean){
+    if (typeof(Storage) !== "undefined") {
+      const favorito = localStorage.getItem(this.product.id.toString());
+      //alert(favorito);
+      if (favorito == null) {
+        //alert(favorito + ' es distinto de: ' +this.product.id.toString())
+        this.productoFavorito = false;
+        localStorage.setItem(this.product.id.toString(), this.product.id.toString());
+      } else {
+        //alert(favorito+ ' es igual que: ' +this.product.id.toString())
+        this.productoFavorito = true;
+        localStorage.removeItem(this.product.id.toString());
+      }
+    } else {
+        //No se permite el webStorage
+        console.log("El navegador no soporta Web Storage");
+    }
+
   }
 
 }

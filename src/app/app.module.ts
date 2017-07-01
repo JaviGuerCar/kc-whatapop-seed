@@ -22,6 +22,7 @@ import { ProductsCollectionComponent } from './products-collection/products-coll
 import { SoldProductsResolveService } from './sold-products-resolve.service';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserService } from './user.service';
+import { LikesComponent } from './likes/likes.component';
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
 | Blue Path                                                        |
@@ -38,7 +39,8 @@ import { UserService } from './user.service';
     ProductComponent,
     ProductsCollectionComponent,
     UserProfileComponent,
-    PublicationDatePipe //declarado para el Blue Path
+    PublicationDatePipe,
+    LikesComponent 
   ],
   imports: [
     BrowserModule,

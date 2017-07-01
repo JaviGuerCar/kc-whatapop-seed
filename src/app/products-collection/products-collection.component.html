@@ -13,10 +13,13 @@
 
     <app-product 
       *ngFor="let product of products"
-      [data]="product"(clickComprar)="comprarProducto($event)"    
+      [data]="product"
+      (clickComprar)="comprarProducto($event)" 
       class="column"
       >
     </app-product>
+    
+    
   </div>
   <div *ngIf="products?.length === 0" class="text-center">
     <span>No se han encontrado productos.</span>

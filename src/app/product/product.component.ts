@@ -8,6 +8,7 @@ import { Product } from '../product';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent {
+  
 
   @Input() data: Product[];
 

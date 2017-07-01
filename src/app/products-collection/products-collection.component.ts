@@ -7,6 +7,7 @@ import { Product } from '../product';
 import { ProductFilter } from '../product-filter';
 import { ProductService } from '../product.service';
 
+
 @Component({
   selector: 'app-products-collection',
   templateUrl: './products-collection.component.html',
@@ -15,6 +16,7 @@ import { ProductService } from '../product.service';
 export class ProductsCollectionComponent implements OnDestroy, OnInit {
 
   products: Product[];
+  favorito: boolean;
   private _filterStream$: Subject<ProductFilter> = new Subject;
 
   constructor(
