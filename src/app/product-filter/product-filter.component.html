@@ -1,14 +1,33 @@
 <div>
   <div class="row">
-    <div class="small-6 medium-2 large-3 columns">
-      <input [(ngModel)]="productFilter.text" type="text" placeholder="Pe. Uncharted">
+    <div class="small-4 medium-4 large-4 columns">
+      <label for="BuscarNombre">Nombre</label>
+      <input id="BuscarNombre" [(ngModel)]="productFilter.text" type="text" placeholder="Pe. Uncharted">
     </div>
-    <div class="small-6 medium-2 large-3 columns">
-      <select [(ngModel)]="productFilter.category">
+    <div class="small-4 medium-4 large-4 columns">
+      <label for="Categoría">Categoría</label>
+      <select id="Categoría" [(ngModel)]="productFilter.category">
         <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
       </select>
     </div>
-    <div class="small-12 medium-3 large-2 columns">
+    <div class="small-4 medium-4 large-4 columns">
+      <label for="Estado">Estado</label>
+      <select id="Estado" [(ngModel)]="productFilter.state">
+        <option *ngFor="let states of _state" [value]="states.nombre">{{ states.valor }}</option>
+      </select>
+    </div>
+   
+  </div>
+  <div class="row">
+    <div class="small-4 medium-4 large-4 columns">
+      <label for="PrecioMinimo">Precio Mín.</label>
+      <input id="PrecioMinimo" [(ngModel)]="productFilter.minprice" type="text" placeholder="Precio mínimo" min="0">
+    </div>
+    <div class="small-4 medium-4 large-4 columns">
+      <label for="PrecioMaximo">Precio Max.</label>
+      <input id="PrecioMaximo" [(ngModel)]="productFilter.maxprice" type="text" placeholder="Precio máximo" min="0">
+    </div>
+     <div class="small-4 medium-4 large-4 columns miBoton">
       <button (click)="notifyHost()" class="button expanded">Buscar</button>
     </div>
   </div>

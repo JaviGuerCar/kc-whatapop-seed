@@ -64,17 +64,26 @@ export class ProductService {
 
     let queryString = '';
  
-    // Pink Path
     if (filter){
+      // Filtro por texto
       if(filter.text){
         queryString += `&q=${filter.text}`;
       } 
-      if(filter.category){
+      // Filtro por categoria
+      if(filter.category && filter.category !=='0'){
         queryString += `&category.id=${filter.category}`;
       } 
+      // Filtro por estado
       if(filter.state){
         queryString += `&state=${filter.state}`;
       } 
+      // Filtro por rango de precios
+      if(filter.minprice && filter.minprice !==0){
+         queryString += `&price_gte=${filter.minprice}`;
+       } 
+      if(filter.maxprice && filter.maxprice !==0){
+        queryString += `&price_lte=${filter.maxprice}`;
+      }
     } 
 
     return this._http
